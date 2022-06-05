@@ -62,8 +62,8 @@ def entregar_trabajo(request):
 
 def search_course_view(request):
     print(request.GET)
-    course = Courses.objects.filter(name__icontains = request.GET['search'])
-    context = {'course':course}
+    courses = Courses.objects.filter(name__icontains = request.GET['search'])
+    context = {'courses':courses}
     return render(request, 'search_course.html', context = context)
 
 
