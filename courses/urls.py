@@ -6,4 +6,7 @@ from courses.views import *
 
 urlpatterns = [
 
-    path('', courses, name = 'courses') ]
+    path('', courses, name = 'courses'), 
+    
+    
+]

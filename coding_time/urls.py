@@ -26,5 +26,7 @@ urlpatterns = [
     path('', index, name = 'index'),
     path('fecha_de_hoy', fecha_actual, name = 'fecha actual'),
     path('probando_template/', probando_template, name = 'probando_template'),
-    path('courses/', include('courses.urls'))
+    path('courses/', include('courses.urls')),
+    path('estudiantes/', show_students, name = 'estudiantes'),
+    path('trabajos/', trabajos, name = 'trabajos') 
 ]   
