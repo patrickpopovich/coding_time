@@ -28,5 +28,6 @@ urlpatterns = [
     path('probando_template/', probando_template, name = 'probando_template'),
     path('courses/', include('courses.urls')),
     path('estudiantes/', show_students, name = 'estudiantes'),
-    path('trabajos/', trabajos, name = 'trabajos') 
+    path('trabajos/', trabajos, name = 'trabajos'),
+    path('inscripcion/', inscripcion, name = 'inscripcion') 
 ]   
