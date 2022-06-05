@@ -23,7 +23,7 @@ from coding_time.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/<nombre>/', saludo, name = 'saludo'),
-    path('despedida/', despedida, name = 'despedida'),
+    path('', index, name = 'index'),
     path('fecha_de_hoy', fecha_actual, name = 'fecha actual'),
     path('probando_template/', probando_template, name = 'probando_template'),
     path('courses/', courses, name = 'courses')
