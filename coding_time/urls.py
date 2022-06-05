@@ -15,7 +15,7 @@ Including another URLconf
 """
 from itertools import product
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from courses.views import *
 from coding_time.views import *
@@ -26,5 +26,5 @@ urlpatterns = [
     path('', index, name = 'index'),
     path('fecha_de_hoy', fecha_actual, name = 'fecha actual'),
     path('probando_template/', probando_template, name = 'probando_template'),
-    path('courses/', courses, name = 'courses')
+    path('courses/', include('courses.urls'))
 ]   
