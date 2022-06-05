@@ -41,7 +41,30 @@ def inscripcion(request):
             context = {'new_student':new_student}
         return render(request, 'inscripcion.html', context=context )
 
+def entregar_trabajo(request):
+    if request.method == 'GET':
 
+        form = Student_Form()
+        context = {'form':form}
+        return render(request, 'inscripcion.html', context=context )
+
+    else:
+        form = Student_Form(request.POST)
+        if form.is_valid():
+            new_student = Estudiante.objects.create(
+                name = form.cleaned_data['name'],
+                last_name = form.cleaned_data['last_name'],
+                identification = form.cleaned_data['identification']
+
+            )
+            context = {'new_student':new_student}
+        return render(request, 'inscripcion.html', context=context )
+
+def search_course_view(request):
+    print(request.GET)
+    course = Courses.objects.filter(name__icontains = request.GET['search'])
+    context = {'course':course}
+    return render(request, 'search_course.html', context = context)
 
 
 

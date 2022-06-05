@@ -36,15 +36,15 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/inscripcion/">Inscripción</a>
-                        <a class="dropdown-item" href="/estudiantes/">Ver estudiante</a>
+                        <a class="dropdown-item" href="/estudiantes/">Ver estudiantes</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/trabajos/">Entregas</a>
                     </div>
                 </li>
                
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="¿Qué andas buscando?" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="/courses/search-course/" method="GET">
+                <input class="form-control mr-sm-2" type="text" placeholder="¿Buscas un curso?" name='search' aria-label="Search">
                 <button class="btn btn-outline-Primary my-2 my-sm-2" type="submit">¡Encontrar!</button>
             </form>
         </div>

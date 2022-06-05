@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block nombre_pagina %}
-Trabajos y entregas
+Buscar
 {% endblock %}
 
 
@@ -9,9 +9,9 @@ Trabajos y entregas
 
 {% block titulo %}
 
-<h1>   Aquí podras ver todos los trabajos y entregas de la plataforma: </h1>
+<h1>   Buscar Curso </h1>
 
-{% for trabajo in entregas%}
+{% for course in courses %}
 
 
     
@@ -19,16 +19,15 @@ Trabajos y entregas
             <div class="card" style="width: 18rem;">
             
                 <div class="card-body">
-                <h5 class="card-title">{{trabajo.name}}</h5>
-                <p class="card-text">Entregado: {{trabajo.delivered}}</p>
-              
+                <h5 class="card-title">Nombre: {{courses.name}}</h5>
+                
                 
             </div>
         </div>
     </div>
     
 
-{% endfor%}
+{% endfor %}
 
 {% endblock %}
     
