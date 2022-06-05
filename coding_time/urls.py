@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/<nombre>/', saludo, name = 'saludo'),
     path('despedida/', despedida, name = 'despedida'),
-    path('fecha_de_hoy', fecha_actual, name = 'fecha actual')
-]
+    path('fecha_de_hoy', fecha_actual, name = 'fecha actual'),
+    path('probando_template/', probando_template, name = 'probando_template')
+]   
