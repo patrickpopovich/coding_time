@@ -14,6 +14,14 @@ def fecha_actual(request):
     return HttpResponse(mensaje)
 
 def probando_template(request):
-    return render(request, 'template_1.html', context ={})
+    context = {
+        'nombre':'Patrick',
+        'apellido':'Popovich',
+
+        'lenguajes':['Python','Scala','Ruby','Java','Javascript','Cobol','Perl']
+
+        
+    }
+    return render(request, 'template_1.html', context =context)
 
     

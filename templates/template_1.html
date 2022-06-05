@@ -11,6 +11,16 @@
     <h2>Mi nombre es {{nombre}}</h2>
     <h2>Mi apellido es {{apellido}}</h2>
 
+
+    {% for lenguaje in lenguajes %}
+    
+        <p style = color:green>  {{lenguaje}} Esta disponible </p>
+   
+        <p style = color:red> {{lenguaje}} Esta disponible </p>
+   
+    {% endfor %}
+
+
     {% for edad in edades %}
         {% if edad >= 18 %}
             <p style = color:green> edad es {{edad}} </p>
