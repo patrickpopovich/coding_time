@@ -18,6 +18,16 @@ class Estudiante(models.Model):
     last_name = models.CharField(max_length=69)
     identification = models.IntegerField(unique=True)
 
+    class Meta:
+        verbose_name = "Estudiante"
+        verbose_name_plural = "Estudiantes"
+
 class Trabajo(models.Model):
     name = models.CharField(max_length=69)
     delivered = models.BooleanField(default = False)
+
+    class Meta:
+        verbose_name = "Trabajo"
+        verbose_name_plural = "Trabajos"
+
+    
