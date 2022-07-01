@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block nombre_pagina %}
+Información del curso
+{% endblock %}
+
+{% block titulo %}
+
+<h1>    Información sobre el curso: </h1>
+
+
+
+
+    
+    <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+            <div class="card" style="width: 18rem;">
+            
+                <div class="card-body">
+                <h5 class="card-title">{{course.name}}</h5>
+                <p class="card-text">{{course.description}}</p>
+                <p class="card-text">${{course.price}}</p>
+                <a href="#" class="btn btn-primary">¡NO SE QUE HACER CON ESTE BOTÓN!</a>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+{% endblock %}
+    

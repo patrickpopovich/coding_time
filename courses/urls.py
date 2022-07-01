@@ -6,8 +6,9 @@ from courses.views import *
 
 urlpatterns = [
 
-    path('', courses, name = 'courses'), 
-    path('search-course/', search_course_view, name = 'search_course_view') 
+    path('',courses, name = 'courses'), 
+    path('search-course/', search_course_view, name = 'search_course_view'),
+    path('course_detail/<int:pk>/', course_detail, name = 'course_detail'),
     
     
 ]

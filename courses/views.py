@@ -10,6 +10,16 @@ def courses(request):
     context = {'cursos': cursos}
     return render(request, 'courses.html', context = context)
 
+def course_detail(request, pk):
+    try:
+        course = Courses.objects.get(id=pk)
+        context = {'course':course}
+        return render(request, 'course_detail.html', context=context)
+    except:
+        context = {'error': 'No se pudo encontrar el curso.'}
+        return render(request,'courses.html', context = context)
+
+
 def show_students(request):
     students = Estudiante.objects.all()
     context = {'students': students}
@@ -65,6 +75,9 @@ def search_course_view(request):
     courses = Courses.objects.filter(name__icontains = request.GET['search'])
     context = {'courses':courses}
     return render(request, 'search_course.html', context = context)
+
+
+
 
 
 
