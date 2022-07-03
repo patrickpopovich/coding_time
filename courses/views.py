@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render
 from courses.models import *
@@ -24,6 +25,30 @@ def show_students(request):
     students = Estudiante.objects.all()
     context = {'students': students}
     return render(request, 'estudiantes.html', context = context)
+
+def student_detail(request, pk):
+    try:
+        student = Estudiante.objects.get(id=pk)
+        context = {'student':student}
+        return render(request, 'student_detail.html', context=context)
+    except:
+        context = {'error': 'No se pudo encontrar el estudiante.'}
+        return render(request,'estudiantes.html', context = context)
+
+def delete_student(request, pk):
+    try:
+        if request.method == 'GET':
+            student = Estudiante.objects.get(id=pk)
+            context = {'student':student}
+    
+        else:
+            student = Estudiante.objects.get(id=pk)
+            student.delete()
+            context = {'message':'Futuro autodidacta eliminado con éxito.'}
+        return render(request, 'delete_student.html', context=context)
+    except:
+            context = {'error': 'No se pudo encontrar el estudiante.'}
+            return render(request,'delete_student.html', context = context)
 
 
 

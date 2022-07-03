@@ -4,12 +4,14 @@
 Estudiantes Registrados
 {% endblock %}
 
-
+{{message}}
 
 
 {% block titulo %}
 
 <h1>   Estudiantes registrados: </h1>
+
+{{message}}
 
 {% for student in students %}
 
@@ -22,7 +24,7 @@ Estudiantes Registrados
                 <h5 class="card-title">Nombre: {{student.name}}</h5>
                 <p class="card-text"> Apellido: {{student.last_name}}</p>
                 <p class="card-text"> DNI: {{student.identification}}</p>
-                
+                <a href="/student_detail/{{student.id}}/" class="btn btn-primary">¡Ver Estudiante!</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block nombre_pagina %}
+Eliminación Estudiante
+{% endblock %}
+
+{% block titulo %}
+
+<h1>    Eliminar Estudiante: </h1>
+
+
+
+{% if student %}
+    
+  
+<h3 style="color: red"> ¿Eliminar Estudiante {{student.name}} {{student.last_name}}? </h3>             
+                
+<form action ="/delete_student/{{student.id}}/" method = "POST">
+    {% csrf_token %}
+    <button class = "btn btn-danger" type="submit">Eliminar</button>
+</form>
+
+{% else %}   
+
+{{message}}
+
+{% endif %} 
+
+
+{% endblock %}
+    
