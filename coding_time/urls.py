@@ -36,4 +36,5 @@ urlpatterns = [
     path('create_course/', Create_course.as_view(), name = 'create_course'),
     path('update_estudiante/', Update_student.as_view(), name = 'update_estudiante'),
     path('login/', login_view, name = 'login'),
+    path('logout/', logout_view, name = 'logout'),
 ]   
