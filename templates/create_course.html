@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block nombre_pagina %}
+Crear Curso
+{% endblock %}
+
+
+
+
+{% block titulo %}
+
+{% if form %}
+    <h1>   Nuevo Curso </h1>
+
+    <form method = "POST" action ="">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit", value="Guardar">
+    </form>
+
+
+{% endif %}
+
+{% endblock %}
+
+
+    

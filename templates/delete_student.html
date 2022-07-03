@@ -10,21 +10,17 @@ Eliminación Estudiante
 
 
 
-{% if student %}
+
     
   
-<h3 style="color: red"> ¿Eliminar Estudiante {{student.name}} {{student.last_name}}? </h3>             
+<h3 style="color: red"> ¿Eliminar Estudiante {{object.name}} {{object.last_name}}? </h3>             
                 
-<form action ="/delete_student/{{student.id}}/" method = "POST">
+<form method = "POST">
     {% csrf_token %}
     <button class = "btn btn-danger" type="submit">Eliminar</button>
 </form>
 
-{% else %}   
 
-{{message}}
-
-{% endif %} 
 
 
 {% endblock %}
