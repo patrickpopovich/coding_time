@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block nombre_pagina %}
+Registro de Usuario
+{% endblock %}
+
+
+{{message}}
+
+
+{% block titulo %}
+
+
+    <h1>   Crear usuario </h1>
+    <h3>{{errors}}</h3>
+    <form method = "POST" action ="">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit", value="Crear">
+    </form>
+
+
+
+
+{% endblock %}
+
+
+    
