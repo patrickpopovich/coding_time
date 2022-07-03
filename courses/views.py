@@ -158,6 +158,14 @@ class Update_student(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('student_detail', kwargs = {'pk':self.object.pk})
 
+class Update_user(LoginRequiredMixin, UpdateView):
+    model = User_registration
+    template_name = 'profile.html'
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('index', kwargs = {'pk':self.object.pk})
+
 
 
 

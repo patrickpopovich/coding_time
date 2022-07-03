@@ -8,6 +8,7 @@ class Courses(models.Model):
     description = models.CharField(max_length=269, blank = True, null= True)
     student_qty = models.IntegerField()
     difficulty_hard = models.BooleanField(default = True)
+    image = models.ImageField(upload_to = 'courses', blank=True, null=True)
 
     class Meta:
         verbose_name = "Curso"

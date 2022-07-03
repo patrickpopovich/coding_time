@@ -42,5 +42,5 @@ urlpatterns = [
     path('logout/', logout_view, name = 'logout'),
     path('register/', register_view, name = 'register'),
     path('contact/', contact, name = 'contact'),
-    
+    path('profile/', Update_user.as_view(), name = 'profile'),
 ]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
