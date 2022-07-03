@@ -12,6 +12,8 @@ from django.contrib.auth.forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from coding_time.forms import User_registration
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 #def courses(request):
@@ -105,7 +107,7 @@ class Detail_courses(DetailView):
     template_name = 'course_detail.html'
     queryset = Courses.objects.all()
 
-class Create_course(CreateView):
+class Create_course(LoginRequiredMixin, CreateView):
     model = Courses
     template_name = 'create_course.html'
     fields = '__all__'
@@ -113,7 +115,7 @@ class Create_course(CreateView):
     def get_success_url(self):
         return reverse('course_detail', kwargs={'pk':self.object.pk})
 
-class Inscripcion(CreateView):
+class Inscripcion(LoginRequiredMixin,CreateView):
     model = Estudiante
     template_name = 'inscripcion.html'
     fields = '__all__'
@@ -139,7 +141,7 @@ def student_detail(request, pk):
         return render(request,'estudiantes.html', context = context)
 
 
-class Delete_student(DeleteView):
+class Delete_student(LoginRequiredMixin,DeleteView):
     model = Estudiante
     template_name = 'delete_student.html'
 
@@ -148,7 +150,7 @@ class Delete_student(DeleteView):
 
 
  
-class Update_student(UpdateView):
+class Update_student(LoginRequiredMixin, UpdateView):
     model = Estudiante
     template_name = 'update_estudiante.html'
     fields = '__all__'
@@ -224,6 +226,10 @@ def search_course_view(request):
     courses = Courses.objects.filter(name__icontains = request.GET['search'])
     context = {'courses':courses}
     return render(request, 'search_course.html', context = context)
+
+@login_required
+def contact(request):
+    return render(request, 'contact.html')
 
 
 

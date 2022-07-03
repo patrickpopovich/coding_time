@@ -60,15 +60,21 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% if request.user.is_authenticated %}
-                        <a class="dropdown-item" href="/logout/">Cerrar Sesión</a>
+                        <a class="dropdown-item" href="/logout/">Cerrar Sesión <h3>{{request.user.username}}</h3></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/profile/">Perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/contact/">Contacto</a>
+                       
 
                         {% else %}
                         <a class="dropdown-item" href="/login/">Iniciar Sesión</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/register/">Registrarse</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/contact/">Contacto</a>
                        
+                        
                         
                         {% endif %}
                     </div>

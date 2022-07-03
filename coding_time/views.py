@@ -29,4 +29,10 @@ def probando_template(request):
     }
     return render(request, 'template_1.html', context =context)
 
+def search_course_view(request):
+    print(request.GET)
+    courses = Courses.objects.filter(name__icontains = request.GET['search'])
+    context = {'courses':courses}
+    return render(request, 'search_course.html', context = context)
+
     

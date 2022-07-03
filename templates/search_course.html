@@ -4,9 +4,6 @@
 Buscar
 {% endblock %}
 
-
-
-
 {% block titulo %}
 
 <h1>   Buscar Curso </h1>
@@ -19,7 +16,7 @@ Buscar
             <h5 class="card-title">{{course.name}}</h5>
             <p class="card-text">{{course.description}}</p>
             <p class="card-text">{{course.price}}</p>
-            <a href="#" class="btn btn-primary">Comprar!</a>
+            <a href="#/course_detail/{{course.id}}/" class="btn btn-primary">¡Ver curso!</a>
         </div>
     </div>
 
@@ -27,5 +24,19 @@ Buscar
 
 {% endfor %}
 
+
+
+    
 {% endblock %}
     
+
+    
+
+
+
+
+
+    
+
+
+
