@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block nombre_pagina %}
+Actualizar Curso
+{% endblock %}
+
+
+
+
+{% block titulo %}
+
+{% if form %}
+    <h1>  Actualizar Curso </h1>
+
+    <form method = "POST" action =""  enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit", value="Guardar">
+    </form>
+
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block nombre_pagina %}
+Eliminación Curso
+{% endblock %}
+
+{% block titulo %}
+
+<h1>    Eliminar Curso: </h1>
+
+
+
+
+    
+  
+<h3 style="color: red"> ¿Eliminar Curso {{object.name}}? </h3>             
+                
+<form method = "POST">
+    {% csrf_token %}
+    <button class = "btn btn-danger" type="submit">Eliminar</button>
+</form>
+
+
+
+
+{% endblock %}
+    

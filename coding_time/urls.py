@@ -25,22 +25,23 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludo/<nombre>/', saludo, name = 'saludo'),
+    
     path('', index, name = 'index'),
-    path('fecha_de_hoy', fecha_actual, name = 'fecha actual'),
-    path('probando_template/', probando_template, name = 'probando_template'),
     path('courses/', include('courses.urls')),
     path('estudiantes/', show_students, name = 'estudiantes'),
-    path('trabajos/', trabajos, name = 'trabajos'),
     path('inscripcion/', Inscripcion.as_view(), name = 'inscripcion'),
     path('student_detail/<int:pk>/', student_detail, name = 'student_detail'),
     path('delete_student/<int:pk>/', Delete_student.as_view(), name = 'delete_student'),
+    path('delete_course/<int:pk>/', Delete_course.as_view(), name = 'delete_course'),
     path('', List_courses.as_view(), name = 'list_courses'), 
     path('create_course/', Create_course.as_view(), name = 'create_course'),
-    path('update_estudiante/', Update_student.as_view(), name = 'update_estudiante'),
     path('login/', login_view, name = 'login'),
     path('logout/', logout_view, name = 'logout'),
     path('register/', register_view, name = 'register'),
     path('contact/', contact, name = 'contact'),
     path('profile/', Update_user.as_view(), name = 'profile'),
+    path('update_course/<int:pk>/', Update_course.as_view(), name = 'update_course'),
+    path('update_student/<int:pk>/', Update_student.as_view(), name = 'update_student'),
+
+   
 ]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

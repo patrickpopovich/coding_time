@@ -3,7 +3,6 @@ from re import template
 from django.http import HttpResponse
 from django.shortcuts import render
 from courses.models import *
-from courses.forms import Student_Form
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -15,20 +14,6 @@ from coding_time.forms import User_registration
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-#def courses(request):
-#    cursos = Courses.objects.all()
-#    context = {'cursos': cursos}
-#    return render(request, 'courses.html', context = context)
-
-# def course_detail(request, pk):
-#     try:
-#         course = Courses.objects.get(id=pk)
-#         context = {'course':course}
-#         return render(request, 'course_detail.html', context=context)
-#     except:
-#         context = {'error': 'No se pudo encontrar el curso.'}
-#         return render(request,'courses.html', context = context) 
 
 def login_view(request):
     
@@ -115,6 +100,13 @@ class Create_course(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('course_detail', kwargs={'pk':self.object.pk})
 
+class Delete_course(LoginRequiredMixin,DeleteView):
+    model = Courses
+    template_name = 'delete_course.html'
+
+    def get_success_url(self):
+        return reverse('courses')
+
 class Inscripcion(LoginRequiredMixin,CreateView):
     model = Estudiante
     template_name = 'inscripcion.html'
@@ -122,9 +114,6 @@ class Inscripcion(LoginRequiredMixin,CreateView):
 
     def get_success_url(self):
         return reverse('student_detail', kwargs={'pk':self.object.pk})
-
-
-
 
 def show_students(request):
     students = Estudiante.objects.all()
@@ -140,7 +129,6 @@ def student_detail(request, pk):
         context = {'error': 'No se pudo encontrar el estudiante.'}
         return render(request,'estudiantes.html', context = context)
 
-
 class Delete_student(LoginRequiredMixin,DeleteView):
     model = Estudiante
     template_name = 'delete_student.html'
@@ -148,15 +136,6 @@ class Delete_student(LoginRequiredMixin,DeleteView):
     def get_success_url(self):
         return reverse('estudiantes')
 
-
- 
-class Update_student(LoginRequiredMixin, UpdateView):
-    model = Estudiante
-    template_name = 'update_estudiante.html'
-    fields = '__all__'
-
-    def get_success_url(self):
-        return reverse('student_detail', kwargs = {'pk':self.object.pk})
 
 class Update_user(LoginRequiredMixin, UpdateView):
     model = User_registration
@@ -169,66 +148,6 @@ class Update_user(LoginRequiredMixin, UpdateView):
 
 
 
-# def delete_student(request, pk):
-#     try:
-#         if request.method == 'GET':
-#             student = Estudiante.objects.get(id=pk)
-#             context = {'student':student}
-    
-#         else:
-#             student = Estudiante.objects.get(id=pk)
-#             student.delete()
-#             context = {'message':'Futuro autodidacta eliminado con éxito.'}
-#         return render(request, 'delete_student.html', context=context)
-#     except:
-#             context = {'error': 'No se pudo encontrar el estudiante.'}
-#             return render(request,'delete_student.html', context = context)
-
-
-
-def trabajos(request):
-    entregas = Trabajo.objects.all()
-    context = {'entregas' : entregas}
-    return render(request,'trabajos.html', context=context)
-
-# def inscripcion(request):
-#     if request.method == 'GET':
-
-#         form = Student_Form()
-#         context = {'form':form}
-#         return render(request, 'inscripcion.html', context=context )
-
-#     else:
-#         form = Student_Form(request.POST)
-#         if form.is_valid():
-#             new_student = Estudiante.objects.create(
-#                 name = form.cleaned_data['name'],
-#                 last_name = form.cleaned_data['last_name'],
-#                 identification = form.cleaned_data['identification']
-
-#             )
-#             context = {'new_student':new_student}
-#         return render(request, 'inscripcion.html', context=context )
-
-# def entregar_trabajo(request):
-#     if request.method == 'GET':
-
-#         form = Student_Form()
-#         context = {'form':form}
-#         return render(request, 'inscripcion.html', context=context )
-
-#     else:
-#         form = Student_Form(request.POST)
-#         if form.is_valid():
-#             new_student = Estudiante.objects.create(
-#                 name = form.cleaned_data['name'],
-#                 last_name = form.cleaned_data['last_name'],
-#                 identification = form.cleaned_data['identification']
-
-#             )
-#             context = {'new_student':new_student}
-#         return render(request, 'inscripcion.html', context=context )
-
 def search_course_view(request):
     print(request.GET)
     courses = Courses.objects.filter(name__icontains = request.GET['search'])
@@ -240,6 +159,23 @@ def contact(request):
     return render(request, 'contact.html')
 
 
+class Update_course(LoginRequiredMixin, UpdateView):
+    model = Courses
+    template_name = 'update_course.html'
+    fields= '__all__'
+    
+
+    def get_success_url(self):
+        return reverse('course_detail', kwargs={'pk':self.object.pk})
+
+class Update_student(LoginRequiredMixin, UpdateView):
+    model = Courses
+    template_name = 'update_student.html'
+    fields= '__all__'
+    
+
+    def get_success_url(self):
+        return reverse('student_detail', kwargs={'pk':self.object.pk})
 
 
 

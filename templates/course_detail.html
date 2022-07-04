@@ -22,7 +22,11 @@ Información del curso
                 <h5 class="card-title">{{object.name}}</h5>
                 <p class="card-text">{{object.description}}</p>
                 <p class="card-text">${{object.price}}</p>
+                <a href="/delete_course/{{object.id}}/" class="btn btn-danger">¡Eliminar!</a>
+                <a href="/update_course/{{object.id}}/" class="btn btn-primary">Modificar</a>
+                <div class="dropdown-divider"></div>
                 <a href="/courses/" class="btn btn-primary">Ver todos los cursos</a>
+
             </div>
         </div>
     </div>
