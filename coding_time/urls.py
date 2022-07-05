@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from itertools import product
+import profile
 from django.contrib import admin
 from django.urls import path, include
 
@@ -21,6 +22,9 @@ from courses.views import *
 from coding_time.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+
+from users.views import List_profiles
+
 
 
 urlpatterns = [
@@ -39,9 +43,9 @@ urlpatterns = [
     path('logout/', logout_view, name = 'logout'),
     path('register/', register_view, name = 'register'),
     path('contact/', contact, name = 'contact'),
-    path('profile/', Update_user.as_view(), name = 'profile'),
+    
     path('update_course/<int:pk>/', Update_course.as_view(), name = 'update_course'),
     path('update_student/<int:pk>/', Update_student.as_view(), name = 'update_student'),
-
-   
+    path('profiles', List_profiles.as_view(), name = 'profiles'), 
+    
 ]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

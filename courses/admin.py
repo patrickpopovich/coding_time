@@ -9,7 +9,3 @@ class CoursesAdmin(admin.ModelAdmin):
 class EstudianteAdmin(admin.ModelAdmin):
     list_display = ['name','last_name','identification']
 
-
-@admin.register(Trabajo) 
-class TrabajoAdmin(admin.ModelAdmin):
-    list_display = ['name']

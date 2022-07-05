@@ -2,8 +2,7 @@
 from django.urls import path
 
 from courses.views import *
-
-
+from users.views import List_profiles
 
 urlpatterns = [
 
@@ -13,7 +12,7 @@ urlpatterns = [
     path('update_course/<int:pk>/', Update_course.as_view(), name = 'update_course'),
     path('student_detail/<int:pk>/', student_detail, name = 'student_detail'),
     path('create_course/', Create_course.as_view(), name = 'create_course'),
-
+    
     path('login/', login_view, name = 'login'),
     path('logout/', logout_view, name = 'logout'),
     path('register/', register_view, name = 'register'),

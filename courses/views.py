@@ -14,6 +14,8 @@ from coding_time.forms import User_registration
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
+from users.models import Profile
+
 
 def login_view(request):
     
@@ -169,13 +171,19 @@ class Update_course(LoginRequiredMixin, UpdateView):
         return reverse('course_detail', kwargs={'pk':self.object.pk})
 
 class Update_student(LoginRequiredMixin, UpdateView):
-    model = Courses
+    model = Estudiante
     template_name = 'update_student.html'
     fields= '__all__'
     
 
     def get_success_url(self):
         return reverse('student_detail', kwargs={'pk':self.object.pk})
+
+
+class Update_profile(LoginRequiredMixin, UpdateView):
+    model = Profile
+    template_name = 'update_profile.html'
+    fields= '__all__'
 
 
 

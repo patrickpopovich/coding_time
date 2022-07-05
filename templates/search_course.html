@@ -16,7 +16,9 @@ Buscar
             <h5 class="card-title">{{course.name}}</h5>
             <p class="card-text">{{course.description}}</p>
             <p class="card-text">{{course.price}}</p>
-            <a href="#/course_detail/{{course.id}}/" class="btn btn-primary">¡Ver curso!</a>
+            <a href="/courses/course_detail/{{course.id}}/" class="btn btn-primary">¡Ver curso!</a>
+            <div class="dropdown-divider"></div>
+                <a href="/courses/" class="btn btn-primary">Ver todos los cursos</a>
         </div>
     </div>
 

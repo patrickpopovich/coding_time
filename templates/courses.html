@@ -10,14 +10,14 @@ Encuentra los mejores cursos
 {% block titulo %}
 
 <h1>    Estos son los cursos actualmente disponibles: </h1>
-
+<div class="d-flex" style="margin-top:5rem; margin-left:7rem"></div>
 {% for curso in object_list %}
 
 
     
-    <div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+    <div class="container" style="margin-top:5rem; margin-left:7rem">
         
-            <div class="card" style="width: 18rem;">
+            <div class="row row-cols-auto" style="width: 18rem;">
                 {% if curso.image %}
                 <img src="{{curso.image.url}}" class="card-img-top" >
                 {% endif %}
@@ -27,11 +27,13 @@ Encuentra los mejores cursos
                 <p class="card-text">${{curso.price}}</p>
                 <a href="/courses/course_detail/{{curso.id}}/" class="btn btn-primary">¡Ver curso!</a>
             </div>
-        </div>
+        
     </div>
-    
+
+
 
 {% endfor%}
 
+</div>
 {% endblock %}
     
