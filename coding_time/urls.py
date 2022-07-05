@@ -43,7 +43,7 @@ urlpatterns = [
     path('logout/', logout_view, name = 'logout'),
     path('register/', register_view, name = 'register'),
     path('contact/', contact, name = 'contact'),
-    
+    path('delete_course/<int:pk>/', Delete_course.as_view(), name = 'delete_course'),
     path('update_course/<int:pk>/', Update_course.as_view(), name = 'update_course'),
     path('update_student/<int:pk>/', Update_student.as_view(), name = 'update_student'),
     path('profiles', List_profiles.as_view(), name = 'profiles'), 
