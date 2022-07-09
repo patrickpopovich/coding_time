@@ -11,9 +11,9 @@ Modificar Perfil
 {% block titulo %}
 
 
-    <h1>   Crear usuario </h1>
+    <h1>   Modificar usuario </h1>
     <h3>{{errors}}</h3>
-    <form method = "POST" action ="">
+    <form method = "POST" action ="" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             {{form.as_table}}

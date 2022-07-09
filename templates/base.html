@@ -62,7 +62,7 @@
                         {% if request.user.is_authenticated %}
                         <a class="dropdown-item" href="/logout/">Cerrar Sesión <h3>{{request.user.username}}</h3><img src="{{request.user.profile.profile_image.url}}"></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/update_profile/<int:pk>">Perfil</a>
+                        <a class="dropdown-item" href="/profiles/">Perfil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/contact/">Contacto</a>
                        

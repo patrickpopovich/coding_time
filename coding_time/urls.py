@@ -31,7 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('', index, name = 'index'),
-    path('courses/', include('courses.urls')),
+    path('courses/', include('courses.urls'),),
     path('estudiantes/', show_students, name = 'estudiantes'),
     path('inscripcion/', Inscripcion.as_view(), name = 'inscripcion'),
     path('student_detail/<int:pk>/', student_detail, name = 'student_detail'),
@@ -46,6 +46,6 @@ urlpatterns = [
     path('delete_course/<int:pk>/', Delete_course.as_view(), name = 'delete_course'),
     path('update_course/<int:pk>/', Update_course.as_view(), name = 'update_course'),
     path('update_student/<int:pk>/', Update_student.as_view(), name = 'update_student'),
-    path('profiles', List_profiles.as_view(), name = 'profiles'), 
+    path('profiles', update_user, name = 'profiles'), 
     
 ]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -13,8 +13,9 @@ from django.shortcuts import redirect, render
 from coding_time.forms import User_registration
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django import forms
+from django.contrib.auth.models import User
 
-from users.models import Profile
 
 
 def login_view(request):
@@ -60,6 +61,7 @@ def index(request):
 def register_view(request):
     if request.method == 'POST':
         form = User_registration(request.POST)
+        
         if form.is_valid():
             print('is valid')
             form.save()
@@ -76,12 +78,39 @@ def register_view(request):
             form = User_registration()
             context = {'errors':errors, 'form':form}
             return render(request, 'auth/register.html', context=context)
+    else:
+        form = User_registration()
+        context = {'form':form}
+        return render(request, 'auth/register.html', context =context)
+    
+
+
+
+def update_user(request):
+    if request.method == 'POST':
+        form = User_registration(request.POST)
+        if form.is_valid():
+            print('is valid')
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username = username, password=password)
+            login(request, user)
+            context = {'message': f'Usuario modificado correctamente {username}'}
+            return render(request, 'index.html', context=context)
+            
+        else:
+            print('it is not valid')
+            errors = form.errors
+            form = User_registration()
+            context = {'errors':errors, 'form':form}
+            return render(request, 'auth/profile.html', context=context)
             
        
     else:
         form = User_registration
         context = {'form':form}
-        return render(request, 'auth/register.html', context = context)
+        return render(request, 'auth/profile.html', context = context)
 
 
 class List_courses(ListView):
@@ -180,10 +209,15 @@ class Update_student(LoginRequiredMixin, UpdateView):
         return reverse('student_detail', kwargs={'pk':self.object.pk})
 
 
-class Update_profile(LoginRequiredMixin, UpdateView):
-    model = Profile
-    template_name = 'update_profile.html'
-    fields= '__all__'
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    password1 = forms.CharField()
+    password2 = forms.CharField()
+
+    class Meta:
+        model = User
+        fields = ['email', 'password1', 'password2']
 
 
 
