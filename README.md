@@ -1,6 +1,6 @@
 Esto es solo una prueba de como se van haciendo las cosas.
 
-Coding Time es una página sencilla.
+Coding Time es una página recién nacida. Quiere ser un marketplace de E-learnings cuando sea grande.
 
 - Haciendo click en Coding Time volverás al home.
 - En la sección Cursos, verás todas las posibilidades de formación disponibles y modificarlas si has iniciado sesión.
